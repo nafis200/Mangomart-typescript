@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App.tsx'
-import { router } from './Routes/Routes.jsx';
+import { router } from './Routes/Routes.js';
 import AuthProvider from './providers/AuthProvider.tsx';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,5 +17,5 @@ createRoot(document.getElementById('root')!).render(
         </div>
       </HelmetProvider>
       </AuthProvider>
-  </StrictMode>,
+  </StrictMode>
 )

@@ -23,6 +23,7 @@ const NavBar = () => {
             <li className='hover:text-yellow-300 hover:font-bold hover:text-[15px]'>
                 <Link to="/order/Mango">Order Mango</Link>
             </li>
+            <li><Link className='hover:text-red-300 hover:font-bold hover:text-[15px]' to="/dashboard/userHome">Dashboard</Link></li>
             <li className=''>
                 <Link to="/dashboard/cart">
                     <button className='btn-sm flex gap-1 hover:text-yellow-300 hover:font-bold hover:text-[15px]'>
