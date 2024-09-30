@@ -7,6 +7,7 @@ import Login from "../components/login/Login";
 import Register from "../components/register/Register";
 // import Register from "../components/register/Register"
 // import Login from "../components/login/Login";
+import OurMango from './../components/ourmango/OurMango';
 
 export const router = createBrowserRouter([
     {
@@ -24,7 +25,11 @@ export const router = createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
-            }
+            },
+            {
+                path:'/ourmango',
+                element:<OurMango></OurMango>
+            },
         ]
     },
 ]);
