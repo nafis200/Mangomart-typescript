@@ -17,5 +17,5 @@ createRoot(document.getElementById('root')!).render(
         </div>
       </HelmetProvider>
       </AuthProvider>
-  </StrictMode>,
+  </StrictMode>
 )
