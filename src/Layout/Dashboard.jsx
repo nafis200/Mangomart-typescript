@@ -6,13 +6,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, Navigate, Outlet } from "react-router-dom";
 import useAxiosPublic from '../hooks/useAxiosPublic'
 import { AuthContext } from '../providers/AuthProvider';
-// import NavBar from '../Pages/Shared/NavBar/NavBar';
+import NavBar from '../Pages/Shared/NavBar/NavBar';
 const Dashboard = () => {
     const axiosPublic = useAxiosPublic()
     const {user} = useContext(AuthContext)
     return (
         <div>
-            <div>  </div>
+            <div> <NavBar></NavBar></div>
 
             <div className="flex">
                 {/* side bar */}
