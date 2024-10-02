@@ -109,7 +109,7 @@ const Login = () => {
                                 </label>
                             </div>
 
-                            <button type="submit" className="btn bg-orange-400 hover:bg-orange-500 w-full">
+                            <button type="submit" className="btn bg-green-400 hover:bg-orange-500 w-full">
                                 Login
                             </button>
                         </form>
