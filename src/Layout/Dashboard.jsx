@@ -12,7 +12,7 @@ const Dashboard = () => {
     const {user} = useContext(AuthContext)
     return (
         <div>
-            <div><NavBar></NavBar>  </div>
+            <div><NavBar></NavBar></div>
 
             <div className="flex">
                 {/* side bar */}
