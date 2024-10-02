@@ -10,6 +10,8 @@ import SingleMango from '../components/ourmango/SingleMango';
 import Dashboard from './../Layout/Dashboard';
 import Userhome from './../Pages/Dashboard/userhome/Userhome';
 import Userform from './../Pages/Dashboard/Userform/Userform';
+import PaymentScreen from './../Pages/Dashboard/payment/PaymentScreen';
+import Paymentsuccess from './../Pages/Dashboard/payment/Paymentsuccess';
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,10 @@ export const router = createBrowserRouter([
       {
         path:'/singlemango/:id',
         element:<SingleMango></SingleMango>
+      },
+      {
+         path:'/success',
+         element:<Paymentsuccess></Paymentsuccess>
       }
     ],
   },
@@ -49,6 +55,10 @@ export const router = createBrowserRouter([
        {
          path: 'mangoOrder',
          element: <Userform></Userform>
+       },
+       {
+         path: 'paymentScreen',
+         element:<PaymentScreen></PaymentScreen>
        }
     ]
   }

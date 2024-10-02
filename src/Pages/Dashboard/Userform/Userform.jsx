@@ -5,9 +5,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { useNavigate } from "react-router";
 
 const Userform = () => {
   const axiosPublic = useAxiosPublic();
+ 
+  const navigate = useNavigate()
+
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
   const [id, setId] = useState(null);
@@ -40,14 +44,17 @@ const Userform = () => {
     let Mangofilter = Mangos.filter((item) => item.name === Mango);
     document.getElementById(id).close();
     const taka = Mangofilter[0].amount;
-    if(Mangofilter[0].quantity < quantity){
-        Swal.fire({
-            title: "Sorry!",
-            text: `I have not ${quantity} kg Mango`,
-            icon: "error",
-          });
-        return
+    if (Mangofilter[0].quantity < quantity) {
+      Swal.fire({
+        title: "Sorry!",
+        text: `I have not ${quantity} kg Mango`,
+        icon: "error",
+      });
+      return;
     }
+
+    let amount = taka * quantity;
+
     const Information = {
       email,
       name,
@@ -55,7 +62,12 @@ const Userform = () => {
       date,
       Mango,
       quantity,
+      amount
     };
+    
+    navigate('/dashboard/paymentScreen',{state: Information})
+    location.reload()
+
   };
 
   return (
