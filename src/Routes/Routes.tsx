@@ -9,6 +9,7 @@ import OurMango from "../components/ourmango/OurMango";
 import SingleMango from '../components/ourmango/SingleMango';
 import Dashboard from './../Layout/Dashboard';
 import Userhome from './../Pages/Dashboard/userhome/Userhome';
+import Userform from './../Pages/Dashboard/Userform/Userform';
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
        {
          path: 'userHome',
          element: <Userhome></Userhome>
+       },
+       {
+         path: 'mangoOrder',
+         element: <Userform></Userform>
        }
     ]
   }
