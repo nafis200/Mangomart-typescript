@@ -31,13 +31,14 @@ const OurMango: React.FC = () => {
     return <div>Loading.....</div>;
   }
 
+
   return (
     <div>
       <h1 className="h-24 text-white">text</h1>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 space-x-4 mt-5">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 space-x-4 mt-5 space-y-7">
       {mango?.map((item, index) => {
         return(
-          <div className="card bg-base-100 shadow-xl">
+          <div className="card bg-base-100 shadow-xl mt-10">
           <figure>
             <img
               src={`${item.image}`}

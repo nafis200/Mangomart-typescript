@@ -33,7 +33,8 @@ const SingleMango = () => {
       return <div>Loading.....</div>;
     }
 
-    const Mangos = mango.filter((item)=> item._id === id) 
+    const Mangos = mango.filter((item)=> item._id === id)
+    
   return(
     <div>
        <h1 className="text-white h-24"></h1>
