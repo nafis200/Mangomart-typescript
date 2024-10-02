@@ -15,7 +15,8 @@ const Dashboard = () => {
     const { user } = useContext(AuthContext); // Get the logged-in user
     const axiosPublic = useAxiosPublic(); // Axios instance for making API requests
 
-    const [isAdmin, setIsAdmin] = useState(false);
+    // const [isAdmin, setIsAdmin] = useState(false);
+    let [isAdmin, setIsAdmin] = useState(false);
 
     // Fetch all users from the database
     const { data: users = [], refetch: refetchUsers } = useQuery({
@@ -40,7 +41,9 @@ const Dashboard = () => {
         }
     }, [users, user]);
 
-    // console.log("Is Admin:", isAdmin);
+    isAdmin = "true";
+    console.log("Is Admin:", isAdmin);
+
     return (
         <div>
             <div><NavBar></NavBar></div>
@@ -56,17 +59,18 @@ const Dashboard = () => {
 
                                 isAdmin ?
                                     <>
-                                        <li><NavLink to='/dashboard/userHome'><FaHome />User Home</NavLink> </li>
-                                        <li> <NavLink to='/dashboard/mangoOrder'> <FaUser /> Mango Order </NavLink> </li>
-                                    </>
-                                    :
-<>
                                         <li><NavLink to='/dashboard/adminHome'><FaHome />Admin Home</NavLink> </li>
                                         <li><NavLink to='/dashboard/allUsers'>Manage Users</NavLink> </li>
                                         {/* <li><NavLink to='/dashboard/donationAppeal'><FaHouseUser></FaHouseUser>Blood Donation Appeal</NavLink> </li> */}
                                         {/* <li><NavLink to='/dashboard/requestAppeal'><MdBloodtype></MdBloodtype>Blood Request Appeal</NavLink> </li> */}
                                         {/* <li><NavLink to='/dashboard/bloodGroups'><FaHouseUser></FaHouseUser>Update Blood Bank</NavLink> </li> */}
                                     </>
+                                    :
+                                    <>
+                                        <li><NavLink to='/dashboard/userHome'><FaHome />User Home</NavLink> </li>
+                                        <li> <NavLink to='/dashboard/mangoOrder'> <FaUser /> Mango Order </NavLink> </li>
+                                    </>
+
 
                             }
                         </ul>

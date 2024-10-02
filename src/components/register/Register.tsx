@@ -54,7 +54,7 @@ const Register = () => {
                     photoURL: photo,
                 }).then(() => {
                     // Prepare user information for storing in database
-                    const userInfo: { name: string; email: string } = { name: name, email: email };
+                    const userInfo: { name: string; email: string; role: string } = { name: name, email: email, role:"user" };
                     
                     // Post user information to the backend
                     axiosPublic.post('/users', userInfo)
@@ -87,14 +87,9 @@ const Register = () => {
                 <title>Register</title>
             </Helmet>
 
-            {/* Background image and overlay */}
-            <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: "url('../../../src/assets/images/bgReg0.jpeg')" }}>
-            </div>
-            <div className="absolute inset-0 bg-black opacity-50"></div>
-
-            {/* Register Form */}
-            <div className="relative z-10 w-full max-w-md p-8 bg-white shadow-md rounded-lg">
-                <h1 className="text-3xl font-bold text-center text-orange-500 mb-6 animate__animated animate__fadeInDown">
+            <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: "url('https://i.postimg.cc/hGg9XV5j/51671298.jpg')" }}></div>
+            <div className="relative w-full max-w-md p-8 bg-white shadow-md rounded-lg mt-20">
+                <h1 className="text-3xl font-bold text-center text-green-500 mb-6 animate__animated animate__fadeInDown">
                     Register Now!
                 </h1>
 
@@ -134,7 +129,7 @@ const Register = () => {
                         </div>
                     </div>
 
-                    <button type="submit" className="btn w-full bg-orange-400 hover:bg-orange-500 text-white">
+                    <button type="submit" className="btn w-full bg-green-400 hover:bg-orange-500 text-white">
                         Register
                     </button>
                 </form>
@@ -152,13 +147,13 @@ const Register = () => {
                 {/* Links to login or go home */}
                 <div className="mt-4 text-center">
                     <p>
-                        Already have an account? <Link to="/login" className="text-orange-600 font-bold">Login</Link>
+                        Already have an account? <Link to="/login" className="text-green-600 font-bold">Login</Link>
                     </p>
                 </div>
 
                 <div className="mt-2 text-center">
                     <p>
-                        Go back to <Link to="/" className="text-orange-500 font-bold">Home</Link>
+                        Go back to <Link to="/" className="text-green-500 font-bold">Home</Link>
                     </p>
                 </div>
             </div>
