@@ -10,6 +10,8 @@ import SingleMango from '../components/ourmango/SingleMango';
 import Dashboard from './../Layout/Dashboard';
 import Userhome from './../Pages/Dashboard/userhome/Userhome';
 import Userform from './../Pages/Dashboard/Userform/Userform';
+import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome'
+import ManageUsers from '../Pages/Dashboard/AdminAccess/ManageUsers'
 
 export const router = createBrowserRouter([
   {
@@ -33,8 +35,8 @@ export const router = createBrowserRouter([
         element: <OurMango></OurMango>,
       },
       {
-        path:'/singlemango/:id',
-        element:<SingleMango></SingleMango>
+        path: '/singlemango/:id',
+        element: <SingleMango></SingleMango>
       }
     ],
   },
@@ -42,14 +44,36 @@ export const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard></Dashboard>,
     children: [
-       {
-         path: 'userHome',
-         element: <Userhome></Userhome>
-       },
-       {
-         path: 'mangoOrder',
-         element: <Userform></Userform>
-       }
+      {
+        path: 'userHome',
+        element: <Userhome></Userhome>
+      },
+      {
+        path: 'mangoOrder',
+        element: <Userform></Userform>
+      },
+
+      // admin only routes
+      {
+        path: 'adminHome',
+        element: <AdminHome></AdminHome>
+      },
+      {
+        path: 'allUsers',
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        // path: 'donationAppeal',
+        // element: <DonationAppeal></DonationAppeal>
+      },
+      {
+        // path: 'requestAppeal',
+        // element: <RequestAppeal></RequestAppeal>
+      },
+      {
+        // path: 'bloodGroups',
+        // element: <UpdateBloodBank></UpdateBloodBank>
+      }
     ]
   }
 ]);
