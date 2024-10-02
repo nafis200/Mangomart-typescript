@@ -12,6 +12,7 @@ import Userhome from './../Pages/Dashboard/userhome/Userhome';
 import Userform from './../Pages/Dashboard/Userform/Userform';
 import PaymentScreen from './../Pages/Dashboard/payment/PaymentScreen';
 import Paymentsuccess from './../Pages/Dashboard/payment/Paymentsuccess';
+import Paymentfailure from './../Pages/Dashboard/payment/Paymentfailure';
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
          path:'/success',
          element:<Paymentsuccess></Paymentsuccess>
+      },
+      {
+        path:'/failure',
+        element:<Paymentfailure></Paymentfailure>
       }
     ],
   },
