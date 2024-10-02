@@ -18,7 +18,7 @@ const NavBar = () => {
                 <Link to="/">Home</Link>
             </li>
             <li className='hover:text-yellow-300 hover:font-bold hover:text-[15px]'>
-                <Link to="/mangoes">Our Mangoes</Link>
+                <Link to="/ourmango">Our Mangoes</Link>
             </li>
             <li className='hover:text-yellow-300 hover:font-bold hover:text-[15px]'>
                 <Link to="/order/Mango">Order Mango</Link>
