@@ -1,6 +1,5 @@
 
 
-import React from 'react';
 import { FaHome, FaHouseUser } from "react-icons/fa";
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, Navigate, Outlet } from "react-router-dom";
@@ -24,10 +23,6 @@ const Dashboard = () => {
                             
                                     <>
                                         <li><NavLink to='/dashboard/userHome'><FaHome />User Home</NavLink> </li>
-                                        <li><NavLink to='/dashboard/donar'><MdBloodtype></MdBloodtype>Donation blood</NavLink> </li>
-                                        <li><NavLink to='/dashboard/donationHistory'><FaHouseUser></FaHouseUser>Blood Donation History</NavLink> </li>
-                                        <li><NavLink to='/dashboard/requestblood'><MdBloodtype></MdBloodtype>Request Blood</NavLink> </li>
-                                        <li><NavLink to='/dashboard/requestHistory'><FaHouseUser></FaHouseUser>Blood Request History</NavLink> </li>
                                     </>
                             
                         </ul>

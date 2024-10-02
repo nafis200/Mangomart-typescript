@@ -7,6 +7,8 @@ import Register from "../components/register/Register";
 // import Login from "../components/login/Login";
 import OurMango from "../components/ourmango/OurMango";
 import SingleMango from '../components/ourmango/SingleMango';
+import Dashboard from './../Layout/Dashboard';
+import Userhome from './../Pages/Dashboard/userhome/Userhome';
 
 export const router = createBrowserRouter([
   {
@@ -35,4 +37,14 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: '/dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+       {
+         path: 'userHome',
+         element: <Userhome></Userhome>
+       }
+    ]
+  }
 ]);
