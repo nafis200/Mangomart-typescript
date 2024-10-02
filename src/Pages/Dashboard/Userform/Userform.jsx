@@ -1,37 +1,65 @@
-
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
-import { AuthContext } from '../../../providers/AuthProvider';
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Userform = () => {
-    const axiosPublic = useAxiosPublic()
-    const {user} = useContext(AuthContext)
-    const [startDate, setStartDate] = useState(new Date());
-    const [id,setId] = useState(null)
+  const axiosPublic = useAxiosPublic();
+  const { user } = useContext(AuthContext);
+  const [startDate, setStartDate] = useState(new Date());
+  const [id, setId] = useState(null);
 
-    const {
-        data: blood = [],
-        isLoading,
-        refetch,
-      } = useQuery({
-        queryKey: ["Mango"],
-        queryFn: async () => {
-          const res = await axiosPublic.get("/mangoInformation");
-          return res.data;
-        },
-      });
-      if (isLoading) {
-        return <div>Loading.....</div>;
-      }
-    
-      console.log(blood)
+  const {
+    data: Mangos = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["Mango"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/mangoInformation");
+      return res.data;
+    },
+  });
+  if (isLoading) {
+    return <div>Loading.....</div>;
+  }
 
-    return (
-        <div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    let email = form.email.value;
+    let name = form.name.value;
+    let Phone_number = form.phone_number.value;
+    let date = form.date.value;
+    let Mango = form.mango.value;
+    let quantity = parseInt(form.quantity.value);
+
+    let Mangofilter = Mangos.filter((item) => item.name === Mango);
+    document.getElementById(id).close();
+    const taka = Mangofilter[0].amount;
+    if(Mangofilter[0].quantity < quantity){
+        Swal.fire({
+            title: "Sorry!",
+            text: `I have not ${quantity} kg Mango`,
+            icon: "error",
+          });
+        return
+    }
+    const Information = {
+      email,
+      name,
+      Phone_number,
+      date,
+      Mango,
+      quantity,
+    };
+  };
+
+  return (
+    <div>
       <div className="overflow-x-auto mt-16">
         <table className="table table-zebra">
           {/* head */}
@@ -44,7 +72,7 @@ const Userform = () => {
               <th>Order</th>
             </tr>
           </thead>
-          {blood?.map((item, index) => {
+          {Mangos?.map((item, index) => {
             return (
               <tbody key={index}>
                 <tr>
@@ -54,15 +82,13 @@ const Userform = () => {
                   <td>{item.amount}per kg</td>
                   <td>
                     <button
-                      className="btn btn-primary"
-                      onClick={() =>
-                      {   
-                        document.getElementById(item._id).showModal()
-                        setId(item._id)
-                      }
-                      }
+                      className="btn btn-success text-white"
+                      onClick={() => {
+                        document.getElementById(item._id).showModal();
+                        setId(item._id);
+                      }}
                     >
-                      Request
+                      Order
                     </button>
                     <section>
                       <dialog
@@ -70,8 +96,10 @@ const Userform = () => {
                         className="modal modal-middle sm:modal-middle"
                       >
                         <div className="modal-box">
-                          <h3 className="font-bold text-lg text-center">Acceptor Information</h3>
-                          <form className="card-body">
+                          <h3 className="font-bold text-lg text-center">
+                            Acceptor Information
+                          </h3>
+                          <form onSubmit={handleSubmit} className="card-body">
                             <div className="flex space-x-3 ml-[-20px]">
                               <div className="">
                                 <label className="label">
@@ -168,7 +196,7 @@ const Userform = () => {
                             <div className="flex justify-center">
                               <input
                                 type="submit"
-                                className="lg:mt-4 md:mt-4 mt-2 btn btn-primary w-24 lg:w-[200px] "
+                                className="lg:mt-4 md:mt-4 mt-2 btn btn-success text-white w-24 lg:w-[200px] "
                                 value="Order"
                               />
                             </div>
@@ -189,7 +217,7 @@ const Userform = () => {
         </table>
       </div>
     </div>
-    );
+  );
 };
 
 export default Userform;
