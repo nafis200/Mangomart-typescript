@@ -1,6 +1,7 @@
 
 
 import { FaHome, FaHouseUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, Navigate, Outlet } from "react-router-dom";
 import useAxiosPublic from '../hooks/useAxiosPublic'
@@ -23,6 +24,7 @@ const Dashboard = () => {
                             
                                     <>
                                         <li><NavLink to='/dashboard/userHome'><FaHome />User Home</NavLink> </li>
+                                        <li>  </li>
                                     </>
                             
                         </ul>
