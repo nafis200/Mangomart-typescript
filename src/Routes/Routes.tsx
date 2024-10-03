@@ -17,6 +17,7 @@ import Userhistory from './../Pages/Dashboard/Userhistory/Userhistory';
 import OrderMango from '../components/ordermango/OrderMango';
 import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome'
 import ManageUsers from '../Pages/Dashboard/AdminAccess/ManageUsers'
+import Graph from './../components/graph/Graph';
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path:'/failure',
         element:<Paymentfailure></Paymentfailure>
+      },
+      {
+        path:'/graph',
+        element: <Graph/>
       }
     ],
   },
