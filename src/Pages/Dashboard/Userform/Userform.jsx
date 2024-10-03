@@ -54,6 +54,7 @@ const Userform = () => {
     }
 
     let amount = taka * quantity;
+    
 
     const Information = {
       email,
@@ -62,7 +63,8 @@ const Userform = () => {
       date,
       Mango,
       quantity,
-      amount
+      amount,
+      id
     };
     
     navigate('/dashboard/paymentScreen',{state: Information})
