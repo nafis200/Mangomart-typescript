@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
+import MessengerCustomerChat from "react-messenger-customer-chat";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -41,7 +42,13 @@ const NavBar = () => {
               Ingredients
             </Link>
           </li>
-
+          <li className="mt-2">
+            <MessengerCustomerChat
+              pageId="378333342041163"
+              appId="1600084450548938"
+            />
+            ,
+          </li>
         </>
       ) : (
         <>
@@ -93,7 +100,10 @@ const NavBar = () => {
           <>
             <div className="navbar-end">
               <span>{user?.displayName}</span>
-              <button onClick={handleLogOut} className="btn btn-success hover:bg-yellow-300">
+              <button
+                onClick={handleLogOut}
+                className="btn btn-success hover:bg-yellow-300"
+              >
                 Log Out
               </button>
             </div>
@@ -102,9 +112,7 @@ const NavBar = () => {
           <>
             <div className="navbar-end">
               <span>{user?.displayName}</span>
-              <button className="btn btn-success hidden">
-                Log Out
-              </button>
+              <button className="btn btn-success hidden">Log Out</button>
             </div>
           </>
         )}
