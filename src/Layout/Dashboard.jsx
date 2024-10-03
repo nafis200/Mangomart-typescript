@@ -30,7 +30,7 @@ const Dashboard = () => {
     useEffect(() => {
         if (users.length > 0 && user) {
             // Find the logged-in user's data in the users array
-            const foundUser = users.find(u => u.email === user.email);
+            const foundUser = users.find(u => u.email === user.email);  
 
             // Check if the user's role is "admin"
             if (foundUser?.role === 'admin') {
@@ -68,7 +68,8 @@ const Dashboard = () => {
                                     :
                                     <>
                                         <li><NavLink to='/dashboard/userHome'><FaHome />User Home</NavLink> </li>
-                                        <li> <NavLink to='/dashboard/mangoOrder'> <FaUser /> Mango Order </NavLink> </li>
+                                        <li> <NavLink to='/dashboard/mangoOrder'> <FaUser/> Mango Order </NavLink> </li>
+                                        <li> <NavLink to='/dashboard/paymenthistory'><FaUser></FaUser> Payment History </NavLink> </li>
                                     </>
 
 

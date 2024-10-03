@@ -10,6 +10,11 @@ import SingleMango from '../components/ourmango/SingleMango';
 import Dashboard from './../Layout/Dashboard';
 import Userhome from './../Pages/Dashboard/userhome/Userhome';
 import Userform from './../Pages/Dashboard/Userform/Userform';
+import PaymentScreen from './../Pages/Dashboard/payment/PaymentScreen';
+import Paymentsuccess from './../Pages/Dashboard/payment/Paymentsuccess';
+import Paymentfailure from './../Pages/Dashboard/payment/Paymentfailure';
+import Userhistory from './../Pages/Dashboard/Userhistory/Userhistory';
+import OrderMango from '../components/ordermango/OrderMango';
 import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome'
 import ManageUsers from '../Pages/Dashboard/AdminAccess/ManageUsers'
 
@@ -35,8 +40,20 @@ export const router = createBrowserRouter([
         element: <OurMango></OurMango>,
       },
       {
-        path: '/singlemango/:id',
-        element: <SingleMango></SingleMango>
+        path: '/OrderMango',
+        element:<OrderMango></OrderMango>
+      },
+      {
+        path:'/singlemango/:id',
+        element:<SingleMango></SingleMango>
+      },
+      {
+         path:'/success',
+         element:<Paymentsuccess></Paymentsuccess>
+      },
+      {
+        path:'/failure',
+        element:<Paymentfailure></Paymentfailure>
       }
     ],
   },
@@ -44,13 +61,25 @@ export const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard></Dashboard>,
     children: [
+       {
+         path: 'userHome',
+         element: <Userhome></Userhome>
+       },
+       {
+         path: 'mangoOrder',
+         element: <Userform></Userform>
+       },
+       {
+         path: 'paymentScreen',
+         element:<PaymentScreen></PaymentScreen>
+       },
+       {
+        path: 'paymenthistory',
+        element:<Userhistory></Userhistory>
+       },
       {
         path: 'userHome',
         element: <Userhome></Userhome>
-      },
-      {
-        path: 'mangoOrder',
-        element: <Userform></Userform>
       },
 
       // admin only routes
