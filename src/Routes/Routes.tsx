@@ -15,6 +15,8 @@ import Paymentsuccess from './../Pages/Dashboard/payment/Paymentsuccess';
 import Paymentfailure from './../Pages/Dashboard/payment/Paymentfailure';
 import Userhistory from './../Pages/Dashboard/Userhistory/Userhistory';
 import OrderMango from '../components/ordermango/OrderMango';
+import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome'
+import ManageUsers from '../Pages/Dashboard/AdminAccess/ManageUsers'
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +76,32 @@ export const router = createBrowserRouter([
        {
         path: 'paymenthistory',
         element:<Userhistory></Userhistory>
+       },
+      {
+        path: 'userHome',
+        element: <Userhome></Userhome>
+      },
+
+      // admin only routes
+      {
+        path: 'adminHome',
+        element: <AdminHome></AdminHome>
+      },
+      {
+        path: 'allUsers',
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        // path: 'donationAppeal',
+        // element: <DonationAppeal></DonationAppeal>
+      },
+      {
+        // path: 'requestAppeal',
+        // element: <RequestAppeal></RequestAppeal>
+      },
+      {
+        // path: 'bloodGroups',
+        // element: <UpdateBloodBank></UpdateBloodBank>
       }
     ]
   }

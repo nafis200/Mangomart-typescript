@@ -5,7 +5,7 @@ import CardContainer from '../../components/CardContainer/CardContainer';
 const Home = () => {
     return (
         <div>
-            <h2 className=''>Home</h2>
+            <h2 className=''></h2>
 
             {/* ------Banner------ */}
             <div className='mt-10'>
