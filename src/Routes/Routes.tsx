@@ -7,6 +7,16 @@ import Register from "../components/register/Register";
 // import Login from "../components/login/Login";
 import OurMango from "../components/ourmango/OurMango";
 import SingleMango from '../components/ourmango/SingleMango';
+import Dashboard from './../Layout/Dashboard';
+import Userhome from './../Pages/Dashboard/userhome/Userhome';
+import Userform from './../Pages/Dashboard/Userform/Userform';
+import PaymentScreen from './../Pages/Dashboard/payment/PaymentScreen';
+import Paymentsuccess from './../Pages/Dashboard/payment/Paymentsuccess';
+import Paymentfailure from './../Pages/Dashboard/payment/Paymentfailure';
+import Userhistory from './../Pages/Dashboard/Userhistory/Userhistory';
+import OrderMango from '../components/ordermango/OrderMango';
+import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome'
+import ManageUsers from '../Pages/Dashboard/AdminAccess/ManageUsers'
 
 export const router = createBrowserRouter([
   {
@@ -30,9 +40,69 @@ export const router = createBrowserRouter([
         element: <OurMango></OurMango>,
       },
       {
+        path: '/OrderMango',
+        element:<OrderMango></OrderMango>
+      },
+      {
         path:'/singlemango/:id',
         element:<SingleMango></SingleMango>
+      },
+      {
+         path:'/success',
+         element:<Paymentsuccess></Paymentsuccess>
+      },
+      {
+        path:'/failure',
+        element:<Paymentfailure></Paymentfailure>
       }
     ],
   },
+  {
+    path: '/dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+       {
+         path: 'userHome',
+         element: <Userhome></Userhome>
+       },
+       {
+         path: 'mangoOrder',
+         element: <Userform></Userform>
+       },
+       {
+         path: 'paymentScreen',
+         element:<PaymentScreen></PaymentScreen>
+       },
+       {
+        path: 'paymenthistory',
+        element:<Userhistory></Userhistory>
+       },
+      {
+        path: 'userHome',
+        element: <Userhome></Userhome>
+      },
+
+      // admin only routes
+      {
+        path: 'adminHome',
+        element: <AdminHome></AdminHome>
+      },
+      {
+        path: 'allUsers',
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        // path: 'donationAppeal',
+        // element: <DonationAppeal></DonationAppeal>
+      },
+      {
+        // path: 'requestAppeal',
+        // element: <RequestAppeal></RequestAppeal>
+      },
+      {
+        // path: 'bloodGroups',
+        // element: <UpdateBloodBank></UpdateBloodBank>
+      }
+    ]
+  }
 ]);
