@@ -70,7 +70,6 @@ const Dashboard = () => {
                                         <li><NavLink to='/dashboard/userHome'><FaHome />User Home</NavLink> </li>
                                         <li> <NavLink to='/dashboard/mangoOrder'> <FaUser/> Mango Order </NavLink> </li>
                                         <li> <NavLink to='/dashboard/paymenthistory'><FaUser></FaUser> Payment History </NavLink> </li>
-                                        <li> <NavLink to='/dashboard/mangoOrder'> <FaUser /> Mango Order </NavLink> </li>
                                     </>
 
 
