@@ -36,7 +36,6 @@ const Userhistory = () => {
             <th>Payment Id</th>
             <th>Qunatity</th>
             <th>Amount</th>
-            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -48,7 +47,6 @@ const Userhistory = () => {
                   <td>{item?.paymnetId}</td>
                   <td>{item?.quantity}</td>
                   <td>{item?.amount}</td>
-                  <td>{item?.status}</td>
                 </tr>
               )
             })
