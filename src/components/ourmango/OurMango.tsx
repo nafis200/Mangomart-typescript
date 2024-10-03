@@ -35,20 +35,21 @@ const OurMango: React.FC = () => {
   return (
     <div>
       <h1 className="h-24 text-white">text</h1>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 space-x-4 mt-5 space-y-7">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 space-x-4 mt-5 space-y-7">
       {mango?.map((item, index) => {
         return(
-          <div className="card bg-base-100 shadow-xl mt-10">
+          <div className="card bg-green-100 shadow-xl mt-10 hover:bg-yellow-400 hover:shadow-black">
           <figure>
             <img
               src={`${item.image}`}
+              className="lg:w-full h-60 object-cover"
               alt="Shoes"
             />
           </figure>
           <div className="card-body">
             <h2 className="card-title">Name: {item?.name} </h2>
             <div className="card-actions justify-end">
-              <NavLink to={`/singlemango/${item._id}`}> <button className="btn btn-success text-white"> Show details </button> </NavLink>
+              <NavLink to={`/singlemango/${item._id}`}> <button className="btn btn-success text-white hover:bg-blue-400"> Show details </button> </NavLink>
             </div>
           </div>
         </div>

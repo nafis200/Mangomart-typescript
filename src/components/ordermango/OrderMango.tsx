@@ -34,10 +34,10 @@ const OrderMango: React.FC = () => {
     return (
         <div>
       <h1 className="h-24 text-white">text</h1>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 space-x-4 mt-5 space-y-7">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 space-x-4 mt-5 space-y-7">
       {mango?.map((item, index) => {
         return(
-          <div className="card bg-base-100 shadow-xl mt-10">
+          <div className="card bg-green-100 bg-base-100 shadow-xl mt-10 hover:bg-yellow-400 hover:shadow-black">
           <figure>
             <img
               src={`${item.image}`}
@@ -48,7 +48,7 @@ const OrderMango: React.FC = () => {
             <h2 className="card-title">Name: {item?.name} </h2>
             <h2 className="card-title">Price: {item?.amount} kg</h2>
             <div className="card-actions lg:justify-end">
-              <NavLink to={`/dashboard/mangoOrder`}> <button className="btn btn-success text-white"> Order Mango </button> </NavLink>
+              <NavLink to={`/dashboard/mangoOrder`}> <button className="btn btn-success text-white hover:bg-blue-400"> Order Mango </button> </NavLink>
             </div>
           </div>
         </div>
