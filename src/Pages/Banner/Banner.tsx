@@ -22,6 +22,7 @@ const Banner = () => {
 
     return (
         <div>
+            <h1 className=""></h1>
             {/* <h3 className='text-center font-bold text-3xl'> This Is Banner</h3> */}
             <Slider {...settings}>
                 <div>

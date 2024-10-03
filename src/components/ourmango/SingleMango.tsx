@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { NavLink } from "react-router-dom";
+import 'animate.css';
 
 interface Mango {
   _id: string;
@@ -41,13 +42,13 @@ const SingleMango = () => {
        <div className="lg:flex md:flex space-x-7">
          <div>
          <img 
-          src={`${Mangos[0].image}`} className="" alt="" />
+          src={`${Mangos[0].image}`} className="animate__animated animate__fadeInDownBig" alt="" style={{ animationDuration: '2s' }} />
          </div>
          <div className="mt-5">
-           <h1>Name: <span className="font-bold">{Mangos[0].name}</span> </h1>
-           <h1>location: <span className="font-bold">{Mangos[0].location}</span> </h1>
-           <h1>Description: <span className="font-bold">{Mangos[0].description}</span> </h1>
-           <h1>Price: <span className="font-bold">{Mangos[0].amount} per kg</span> </h1>
+           <h1 className="animate__animated animate__fadeInRightBig" style={{ animationDuration: '2s' }}>Name: <span className="font-bold">{Mangos[0].name}</span> </h1>
+           <h1 className="animate__animated animate__fadeInRightBig" style={{ animationDuration: '2s' }}>location: <span className="font-bold">{Mangos[0].location}</span> </h1>
+           <h1 className="animate__animated animate__fadeInRightBig" style={{ animationDuration: '2s' }}>Description: <span className="font-bold">{Mangos[0].description}</span> </h1>
+           <h1 className="animate__animated animate__fadeInRightBig" style={{ animationDuration: '2s' }}>Price: <span className="font-bold">{Mangos[0].amount} per kg</span> </h1>
            <NavLink to="/ourmango"> <button className="btn btn-success mt-5">Go back</button> </NavLink>
          </div>
        </div>
