@@ -13,6 +13,8 @@ import Userform from './../Pages/Dashboard/Userform/Userform';
 import PaymentScreen from './../Pages/Dashboard/payment/PaymentScreen';
 import Paymentsuccess from './../Pages/Dashboard/payment/Paymentsuccess';
 import Paymentfailure from './../Pages/Dashboard/payment/Paymentfailure';
+import Userhistory from './../Pages/Dashboard/Userhistory/Userhistory';
+import OrderMango from '../components/ordermango/OrderMango';
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "/ourmango",
         element: <OurMango></OurMango>,
+      },
+      {
+        path: '/OrderMango',
+        element:<OrderMango></OrderMango>
       },
       {
         path:'/singlemango/:id',
@@ -64,7 +70,11 @@ export const router = createBrowserRouter([
        {
          path: 'paymentScreen',
          element:<PaymentScreen></PaymentScreen>
-       }
+       },
+       {
+        path: 'paymenthistory',
+        element:<Userhistory></Userhistory>
+      }
     ]
   }
 ]);

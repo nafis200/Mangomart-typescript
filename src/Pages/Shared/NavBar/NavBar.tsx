@@ -21,7 +21,7 @@ const NavBar = () => {
                 <Link to="/ourmango">Our Mangoes</Link>
             </li>
             <li className='hover:text-yellow-300 hover:font-bold hover:text-[15px]'>
-                <Link to="/order/Mango">Order Mango</Link>
+                <Link to="/OrderMango">Order Mango</Link>
             </li>
             <li><Link className='hover:text-red-300 hover:font-bold hover:text-[15px]' to="/dashboard/userHome">Dashboard</Link></li>
             <li className=''>

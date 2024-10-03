@@ -1,20 +1,21 @@
-import React from "react";
+
+import React from 'react';
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { NavLink } from "react-router-dom";
 
 interface Mango {
-  _id: string;
-  name: string;
-  amount: number;
-  quantity: number;
-  location: string;
-  image: string;
-  description: string;
-}
+    _id: string;
+    name: string;
+    amount: number;
+    quantity: number;
+    location: string;
+    image: string;
+    description: string;
+  }
 
-const OurMango: React.FC = () => {
-  const axiosPublic = useAxiosPublic();
+const OrderMango: React.FC = () => {
+    const axiosPublic = useAxiosPublic();
   const {
     data: mango = [] as Mango[],
     isLoading,
@@ -30,10 +31,8 @@ const OurMango: React.FC = () => {
   if (isLoading) {
     return <div>Loading.....</div>;
   }
-
-
-  return (
-    <div>
+    return (
+        <div>
       <h1 className="h-24 text-white">text</h1>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 space-x-4 mt-5 space-y-7">
       {mango?.map((item, index) => {
@@ -47,8 +46,9 @@ const OurMango: React.FC = () => {
           </figure>
           <div className="card-body">
             <h2 className="card-title">Name: {item?.name} </h2>
-            <div className="card-actions justify-end">
-              <NavLink to={`/singlemango/${item._id}`}> <button className="btn btn-success text-white"> Show details </button> </NavLink>
+            <h2 className="card-title">Price: {item?.amount} kg</h2>
+            <div className="card-actions lg:justify-end">
+              <NavLink to={`/dashboard/mangoOrder`}> <button className="btn btn-success text-white"> Order Mango </button> </NavLink>
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@ const OurMango: React.FC = () => {
       })}
       </div>
     </div>
-  );
+    );
 };
 
-export default OurMango;
+export default OrderMango;
