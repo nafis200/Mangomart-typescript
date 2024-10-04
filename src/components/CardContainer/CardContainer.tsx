@@ -25,7 +25,7 @@ const CardContainer = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {mangoInformation.map((mango) => (
-                    <div key={mango._id} className="card shadow-xl">
+                    <div key={mango._id} className="card hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
                         <figure>
                             <img src={mango.image} alt={mango.name} className="w-full h-48 object-cover" />
                         </figure>
