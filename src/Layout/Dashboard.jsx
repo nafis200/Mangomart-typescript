@@ -1,6 +1,6 @@
 
 
-import { FaHome, FaHouseUser } from "react-icons/fa";
+import { FaHome, FaHouseUser, FaUsers } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, Navigate, Outlet } from "react-router-dom";
@@ -8,6 +8,7 @@ import useAxiosPublic from '../hooks/useAxiosPublic'
 import { AuthContext } from '../providers/AuthProvider';
 import NavBar from '../Pages/Shared/NavBar/NavBar';
 import { useQuery } from "@tanstack/react-query";
+import { MdPayments } from "react-icons/md";
 const Dashboard = () => {
     // const axiosPublic = useAxiosPublic()
     // const { user } = useContext(AuthContext)
@@ -30,7 +31,7 @@ const Dashboard = () => {
     useEffect(() => {
         if (users.length > 0 && user) {
             // Find the logged-in user's data in the users array
-            const foundUser = users.find(u => u.email === user.email);
+            const foundUser = users.find(u => u.email === user.email);  
 
             // Check if the user's role is "admin"
             if (foundUser?.role === 'admin') {
@@ -41,7 +42,7 @@ const Dashboard = () => {
         }
     }, [users, user]);
 
-    isAdmin = "true";
+    // isAdmin = "true";
     console.log("Is Admin:", isAdmin);
 
     return (
@@ -60,15 +61,14 @@ const Dashboard = () => {
                                 isAdmin ?
                                     <>
                                         <li><NavLink to='/dashboard/adminHome'><FaHome />Admin Home</NavLink> </li>
-                                        <li><NavLink to='/dashboard/allUsers'>Manage Users</NavLink> </li>
-                                        {/* <li><NavLink to='/dashboard/donationAppeal'><FaHouseUser></FaHouseUser>Blood Donation Appeal</NavLink> </li> */}
-                                        {/* <li><NavLink to='/dashboard/requestAppeal'><MdBloodtype></MdBloodtype>Blood Request Appeal</NavLink> </li> */}
-                                        {/* <li><NavLink to='/dashboard/bloodGroups'><FaHouseUser></FaHouseUser>Update Blood Bank</NavLink> </li> */}
+                                        <li><NavLink to='/dashboard/allUsers'> <FaUsers></FaUsers> Manage Users</NavLink> </li>
+                                        <li><NavLink to='/dashboard/paymentCollection'><MdPayments ></MdPayments >Payment History</NavLink> </li>
                                     </>
                                     :
                                     <>
                                         <li><NavLink to='/dashboard/userHome'><FaHome />User Home</NavLink> </li>
-                                        <li> <NavLink to='/dashboard/mangoOrder'> <FaUser /> Mango Order </NavLink> </li>
+                                        <li> <NavLink to='/dashboard/mangoOrder'> <FaUser/> Mango Order </NavLink> </li>
+                                        <li> <NavLink to='/dashboard/paymenthistory'><FaUser></FaUser> Payment History </NavLink> </li>
                                     </>
 
 
