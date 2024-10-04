@@ -6,6 +6,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Checkoutform from "./Checkoutform";
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
+
+import { FaStripe } from "react-icons/fa";
+import { RiCodeSSlashLine } from "react-icons/ri";
 const PaymentScreen = () => {
   const axiosPublic = useAxiosPublic();
   const location = useLocation();
@@ -30,7 +33,7 @@ const PaymentScreen = () => {
       <div>
         <h1 className="text-center mt-5 mb-10 font-bold bg-green-700 p-6 text-white">
           Please pay {data.amount} taka for {data.quantity} kg {data.Mango} if
-          does not payment gateway come Please reload{" "}
+          does not come payment gateway Please reload{" "}
         </h1>
       </div>
       <div className="flex justify-center items-center space-x-4">
@@ -38,7 +41,7 @@ const PaymentScreen = () => {
           className="btn"
           onClick={() => document.getElementById("my_modal_1").showModal()}
         >
-          Payment by stripe
+          Payment by stripe <span> <FaStripe className="text-4xl text-blue-400"/> </span>
         </button>
         <dialog id="my_modal_1" className="modal">
           <div className="modal-box">
@@ -57,7 +60,7 @@ const PaymentScreen = () => {
           className="btn"
           onClick={() => document.getElementById("my_modal_2").showModal()}
         >
-          Payment by SSLCommerce
+          Payment by SSLCommerce <RiCodeSSlashLine className="text-4xl text-violet-400"/>
         </button>
         <dialog id="my_modal_2" className="modal">
           <div className="modal-box bg-green-400 text-white">
