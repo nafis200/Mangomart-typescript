@@ -17,6 +17,7 @@ import Userhistory from './../Pages/Dashboard/Userhistory/Userhistory';
 import OrderMango from '../components/ordermango/OrderMango';
 import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome'
 import ManageUsers from '../Pages/Dashboard/AdminAccess/ManageUsers'
+import PaymentHistory from '../Pages/Dashboard/AdminAccess/PaymentHistory'
 
 export const router = createBrowserRouter([
   {
@@ -92,8 +93,8 @@ export const router = createBrowserRouter([
         element: <ManageUsers></ManageUsers>
       },
       {
-        // path: 'donationAppeal',
-        // element: <DonationAppeal></DonationAppeal>
+        path: 'paymentCollection',
+        element: <PaymentHistory></PaymentHistory>
       },
       {
         // path: 'requestAppeal',
