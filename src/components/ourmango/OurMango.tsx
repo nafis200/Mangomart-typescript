@@ -4,7 +4,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { NavLink } from "react-router-dom";
 import { FaLocationArrow, FaSearchLocation } from "react-icons/fa";
 import { ImLocation2 } from "react-icons/im";
-
+import 'animate.css';
 
 interface Mango {
   _id: string;
@@ -52,7 +52,7 @@ const OurMango: React.FC = () => {
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-r from-yellow-400 via-teal-200 to-yellow-400 w-2/3 h-11 mx-auto transform rounded-lg opacity-75"></div>
       {/* <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-r from-yellow-400 via-teal-200 to-yellow-400 w-2/3 mx-auto transform skew-y-3 rounded-lg opacity-75"></div> */}
     </div>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-8">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-8 animate__animated animate__fadeInDownBig" style={{ animationDuration: '2s' }}>
         {mango?.map((item, index) => (
           <div
             key={index}
@@ -62,7 +62,8 @@ const OurMango: React.FC = () => {
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-full h-60 object-cover transition-opacity duration-500 hover:opacity-80"
+                className="w-full h-60 object-cover transition-opacity duration-500 hover:opacity-80 animate__animated animate__fadeInDownBig animate__delay-1s"
+                style={{ animationDuration: '2s' }}
               />
               <span className="absolute top-2 right-2 bg-yellow-500 text-white text-sm font-bold px-2 py-1 rounded-md">
                 {item.amount} Taka
