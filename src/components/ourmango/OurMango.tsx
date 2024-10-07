@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { FaLocationArrow, FaSearchLocation } from "react-icons/fa";
 import { ImLocation2 } from "react-icons/im";
 import 'animate.css';
+import Chatbots from './../chatbot/Chatbots';
 
 interface Mango {
   _id: string;

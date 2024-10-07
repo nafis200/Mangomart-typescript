@@ -19,6 +19,7 @@ import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome'
 import ManageUsers from '../Pages/Dashboard/AdminAccess/ManageUsers'
 import Graph from './../components/graph/Graph';
 import PaymentHistory from '../Pages/Dashboard/AdminAccess/PaymentHistory'
+import Chatbots from './../components/chatbot/Chatbots';
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         path:'/graph',
         element: <Graph/>
+      },
+      {
+        path:'/chatbot',
+        element:<Chatbots/>
       }
     ],
   },

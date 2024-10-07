@@ -47,8 +47,15 @@ const NavBar = () => {
               pageId="378333342041163"
               appId="1600084450548938"
             />
-            ,
           </li>
+          {/* <li>
+            <Link
+              className="hover:text-yellow-300 hover:font-bold hover:text-[15px]"
+              to="/chatbot"
+            >
+              Chatbots
+            </Link>
+          </li> */}
         </>
       ) : (
         <>

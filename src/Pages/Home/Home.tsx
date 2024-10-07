@@ -1,7 +1,7 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
 import CardContainer from '../../components/CardContainer/CardContainer';
-
+import Chatbots from './../../components/chatbot/Chatbots';
 const Home = () => {
     return (
         <div>
@@ -13,6 +13,8 @@ const Home = () => {
                 <Banner></Banner>
             </div>
             <CardContainer></CardContainer>
+
+            <Chatbots/>
         </div>
     );
 };
