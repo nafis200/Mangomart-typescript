@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
-import MessengerCustomerChat from "react-messenger-customer-chat";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -42,12 +41,7 @@ const NavBar = () => {
               Ingredients
             </Link>
           </li>
-          <li className="mt-1 ml-4">
-            <MessengerCustomerChat
-              pageId="378333342041163"
-              appId="1600084450548938"
-            />
-          </li>
+          
           {/* <li>
             <Link
               className="hover:text-yellow-300 hover:font-bold hover:text-[15px]"
