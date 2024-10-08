@@ -9,13 +9,18 @@ import Swal from 'sweetalert2';
 
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { AuthContext } from "../../providers/AuthProvider";
-import useAuth from "../../hooks/useAuth";
+
 
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
-    const { googleSignIn } = useAuth();
-    const { signIn } = useContext(AuthContext);
+    
+    const authContext = useContext(AuthContext);
+    if (!authContext) {
+        throw new Error('AuthContext not found');
+    }
+    const { signIn,googleSignIn } = authContext;
+    
     const location = useLocation();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
@@ -30,7 +35,7 @@ const Login = () => {
         const password = form.password.value;
 
         signIn(email, password)
-            .then(result => {
+            .then(() => {
                 Swal.fire({
                     title: "User Login Successful.",
                     showClass: { popup: `animate__animated animate__fadeInUp animate__faster` },
@@ -38,20 +43,19 @@ const Login = () => {
                 });
                 navigate(from, { replace: true });
             })
-            .catch(error => {
-                console.error(error);
-                toast.error('Invalid Email/Password');
+            .catch((error: any) => {
+                toast.error('Invalid Email/Password: ' + error.message);
             });
-    }
+    };
 
     const handleGoogleSignIn = () => {
         googleSignIn()
-            .then(result => {
+            .then((result: any) => {
                 const userInfo = {
                     email: result.user?.email,
                     name: result.user?.displayName,
                     role: "user"
-                }
+                };
                 axiosPublic.post('/users', userInfo)
                     .then(() => {
                         navigate('/');
@@ -60,22 +64,22 @@ const Login = () => {
     };
 
     return (
-        <div className="hero min-h-screen bg-base-200 bg-[url('https://i.postimg.cc/Y075n05X/1000-F-668433624-HGKul-Uw-Qjae-LV8-Xay-QYy6-F3-RCVQff-TGv.jpg')] animate__animated animate__slideInLeft animate__delay-1s">
+        <div className="hero min-h-screen bg-base-200 bg-[url('https://i.postimg.cc/Jz5w9psC/thumb-1920-1364887.png')] animate__animated animate__slideInLeft animate__delay-1s">
             <Helmet>
                 <title>Login</title>
             </Helmet>
 
             <div className="hero-content flex-col">
                 <div className="text-center">
-                    <h1 className="text-3xl md:text-5xl font-bold text-black my-3 animate__animated animate__fadeInDown">
-                        Login now!
+                    <h1 className="text-3xl md:text-5xl font-bold mt-14 mb-4 animate__animated animate__fadeInDown">
+                        <span className="text-green-600">Login</span> <span className="text-orange-600"> now!</span>
                     </h1>
 
-                    <div className="card w-full lg:w-[600px] shadow-2xl bg-base-100 p-10 animate__animated animate__slideInLeft">
+                    <div className="card bg-transparent w-full lg:w-[600px] shadow-2xl bg-base-100 p-10 animate__animated animate__slideInLeft">
                         <form onSubmit={handleLogin} className="space-y-4">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text font-bold md:text-xl">Email</span>
                                 </label>
                                 <input
                                     type="email"
@@ -88,7 +92,7 @@ const Login = () => {
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text font-bold md:text-xl ">Password</span>
                                 </label>
                                 <div className="relative">
                                     <input
@@ -117,8 +121,8 @@ const Login = () => {
 
                         <div className="divider">OR</div>
 
-                        <button onClick={handleGoogleSignIn} className="btn btn-outline w-full border-orange-500 text-orange-500 hover:border-orange-600 hover:text-orange-600 flex items-center justify-center">
-                            <FcGoogle className="mr-2" /> Continue with Google
+                        <button onClick={handleGoogleSignIn} className="btn w-full bg-green-400 border-orange-500 hover:bg-orange-500 flex items-center justify-center">
+                            <FcGoogle className="mr-2 md:text-xl" /> Continue with Google
                         </button>
 
                         <p className="text-center mt-4">

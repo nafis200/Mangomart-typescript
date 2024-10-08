@@ -36,12 +36,6 @@ const Banner = () => {
                         <p className="text-lg">
                             Mangoes at your doorstep .
                         </p>
-                        {/* <button className="bg-yellow-300 hover:bg-green-500 hover:text-yellow-300 hover:font-bold text-green-500 px-4 py-2 rounded-full mt-2 font-bold text-xl">
-                            <Link to="/ourmango" className="flex items-center gap-2">
-                                <FaLongArrowAltRight />
-                                Explore
-                            </Link>
-                        </button> */}
                     </div>
                 </div>
 
@@ -63,12 +57,12 @@ const Banner = () => {
 
                 <div className="relative h-80 md:h-96 lg:h-128">
                     <img src={ban1} alt="" className="w-full h-full object-cover" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-transparent to-yellow-100 bg-opacity-75 text-white text-center h-full">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-transparent to-orange-400 bg-opacity-75 text-white text-center h-full">
                         {/* <h2 className="text-2xl font-bold mt-16">Welcome to <span className="text-xl md:text-3xl text-green-500">Mango Mart</span></h2> */}
                         <p className="text-lg">
                             {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. */}
                         </p>
-                        <button className="bg-green-400 hover:bg-yellow-300 hover:text-green-400 hover:font-bold text-white px-4 py-2 rounded-full mt-28 font-bold text-xl">
+                        <button className="bg-green-400 hover:bg-orange-300 hover:text-green-400 hover:font-bold text-white px-4 py-2 rounded-full mt-28 font-bold text-xl">
                             <Link to="/OrderMango" className="flex items-center gap-2">
                                 <RiShoppingBasketFill />
                                 Order

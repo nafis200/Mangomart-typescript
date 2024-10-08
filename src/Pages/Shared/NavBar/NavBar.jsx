@@ -8,26 +8,26 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
-      .catch((error: Error) => console.log(error));
+      .then(() => { })
+      .catch((error) => console.log(error));
   };
 
   const navOptions = (
     <>
-      <li className="hover:text-yellow-300 hover:font-bold hover:text-[15px]">
+      <li className="hover:text-orange-400 hover:font-bold text-xl hover:text-[20px]">
         <Link to="/">Home</Link>
       </li>
-      <li className="hover:text-yellow-300 hover:font-bold hover:text-[15px]">
+      <li className="hover:text-orange-300 hover:font-bold text-xl hover:text-[20px]">
         <Link to="/ourmango">Our Mangoes</Link>
       </li>
       {user ? (
         <>
-          <li className="hover:text-yellow-300 hover:font-bold hover:text-[15px]">
+          <li className="hover:text-orange-300 hover:font-bold text-xl hover:text-[20px]">
             <Link to="/OrderMango">Order Mango</Link>
           </li>
           <li>
             <Link
-              className="hover:text-yellow-300 hover:font-bold hover:text-[15px]"
+              className="hover:text-orange-300 hover:font-bold text-xl hover:text-[20px]"
               to="/dashboard/userHome"
             >
               Dashboard
@@ -36,10 +36,10 @@ const NavBar = () => {
         </>
       ) : (
         <>
-          <li className="hover:text-yellow-300 hover:font-bold hover:text-[15px]">
+          <li className="hover:text-orange-300 hover:font-bold text-xl hover:text-[20px]">
             <Link to="/login">Login</Link>
           </li>
-          <li className="hover:text-yellow-300 hover:font-bold hover:text-[15px]">
+          <li className="hover:text-orange-300 hover:font-bold text-xl hover:text-[20px]">
             <Link to="/register">Register</Link>
           </li>
         </>
@@ -49,7 +49,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar fixed z-10 bg-opacity-25 max-w-screen-xl bg-gradient-to-r from-yellow-200 via-green-400 to-yellow-200  bg-black text-white mb-10">
+      <div className="navbar fixed z-10 bg-opacity-25 max-w-screen-xl bg-gradient-to-r from-orange-200 via-green-400 to-orange-200  bg-black text-white mb-10">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -75,7 +75,9 @@ const NavBar = () => {
               {navOptions}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">MangoMart</a>
+          <a className="btn btn-ghost text-xl md:text-2xl">
+            <Link to="/">MangoMart</Link>
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
@@ -84,7 +86,7 @@ const NavBar = () => {
           <>
             <div className="navbar-end">
               <span>{user?.displayName}</span>
-              <button onClick={handleLogOut} className="btn btn-success hover:bg-yellow-300">
+              <button onClick={handleLogOut} className="btn btn-success hover:bg-orange-400">
                 Log Out
               </button>
             </div>

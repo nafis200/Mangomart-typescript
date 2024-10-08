@@ -8,7 +8,7 @@ import {
   signInWithPopup, 
   signOut, 
   updateProfile, 
-  User 
+  User
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import useAxiosPublic from "../hooks/useAxiosPublic";

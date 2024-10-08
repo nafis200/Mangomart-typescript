@@ -2,7 +2,6 @@ import { useContext, useState, FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Helmet } from "react-helmet-async";
-import { updateProfile } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from "sweetalert2";
@@ -10,24 +9,28 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext); 
+    const authContext = useContext(AuthContext);
+    if (!authContext) {
+        throw new Error('AuthContext not found');
+    }
+    const { createUser,updateUserProfile} = authContext
     const [registerError, setRegisterError] = useState<string>('');
     const [success, setSuccess] = useState<string>('');
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
-    const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+
+    const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.target as HTMLFormElement;
-        const name = form.name.value;
-        const photo = form.photo.value;
-        const email = form.email.value;
-        const password = form.password.value;
+        const name = (form.elements.namedItem("name") as HTMLInputElement).value; 
+        const photo = (form.elements.namedItem("photo") as HTMLInputElement).value;
+        const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+        const password = (form.elements.namedItem("password") as HTMLInputElement).value;
 
         setRegisterError('');
         setSuccess('');
 
-        // Validate password strength
         if (password.length < 6) {
             setRegisterError('Password should be at least 6 characters or longer');
             return;
@@ -42,43 +45,32 @@ const Register = () => {
             return;
         }
 
-        createUser(email, password)
-            .then(result => {
-                const loggedUser = result.user;
-                setSuccess('User Created Successfully.');
-                toast.success('User Created Successfully.');
+        try {
+            await createUser(email, password); 
+            setSuccess('User Created Successfully.');
+            toast.success('User Created Successfully.');
 
-                // Update user profile with display name and photo URL
-                updateProfile(loggedUser, {
-                    displayName: name,
-                    photoURL: photo,
-                }).then(() => {
-                    // Prepare user information for storing in database
-                    const userInfo: { name: string; email: string; role: string } = { name: name, email: email, role:"user" };
-                    
-                    // Post user information to the backend
-                    axiosPublic.post('/users', userInfo)
-                        .then(res => {
-                            if (res.data.insertedId) {
-                                Swal.fire({
-                                    position: "top-end",
-                                    icon: "success",
-                                    title: "User created successfully",
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                                navigate('/');
-                            }
-                        });
-                }).catch(error => {
-                    console.error('Error updating profile:', error);
-                    setRegisterError('Failed to update profile.');
+            await updateUserProfile(name,photo);
+            const userInfo = { name, email, role: "user" };
+            const res = await axiosPublic.post('/users', userInfo);
+            if (res.data.insertedId) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User created successfully",
+                    showConfirmButton: false,
+                    timer: 1500
                 });
-            })
-            .catch(error => {
-                console.error('Error creating user:', error);
+                navigate('/');
+            }
+        } catch (error: any) {
+            console.error('Error:', error);
+            if (error.code) {
                 setRegisterError(error.message);
-            });
+            } else {
+                setRegisterError('Failed to create user. Please try again.');
+            }
+        }
     };
 
     return (
@@ -87,37 +79,37 @@ const Register = () => {
                 <title>Register</title>
             </Helmet>
 
-            <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: "url('https://i.postimg.cc/hGg9XV5j/51671298.jpg')" }}></div>
-            <div className="relative w-full max-w-md p-8 bg-white shadow-md rounded-lg mt-20">
-                <h1 className="text-3xl font-bold text-center text-green-500 mb-6 animate__animated animate__fadeInDown">
-                    Register Now!
+            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://i.postimg.cc/5NpqTvfk/1364889.png')" }}></div>
+            <div className="relative w-full max-w-md p-8 bg-transparent shadow-md rounded-lg mt-20">
+                <h1 className="text-xl md:text-5xl font-bold text-center text-green-600 mb-6 animate__animated animate__fadeInDown">
+                    Register <span className="text-orange-500">Here !</span>
                 </h1>
 
                 <form onSubmit={handleRegister}>
                     <div className="form-control w-full mb-4">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text font-bold md:text-xl">Name</span>
                         </label>
                         <input type="text" name="name" placeholder="Enter your name" className="input input-bordered w-full" required />
                     </div>
 
                     <div className="form-control w-full mb-4">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text font-bold md:text-xl">Email</span>
                         </label>
                         <input type="email" name="email" placeholder="Enter your email" className="input input-bordered w-full" required />
                     </div>
 
                     <div className="form-control w-full mb-4">
                         <label className="label">
-                            <span className="label-text">Photo URL</span>
+                            <span className="label-text font-bold md:text-xl">Photo URL</span>
                         </label>
                         <input type="text" name="photo" placeholder="Enter photo URL" className="input input-bordered w-full" required />
                     </div>
 
                     <div className="form-control w-full mb-6">
                         <label className="label">
-                            <span className="label-text">Password</span>
+                            <span className="label-text font-bold md:text-xl">Password</span>
                         </label>
                         <div className="relative">
                             <input type={showPassword ? "text" : "password"} name="password" placeholder="Enter your password" className="input input-bordered w-full" required />
@@ -133,18 +125,13 @@ const Register = () => {
                         Register
                     </button>
                 </form>
-
-                {/* Display error messages */}
                 {registerError && (
                     <p className="text-red-500 text-center mt-4">{registerError}</p>
                 )}
-
-                {/* Display success message */}
                 {success && (
                     <p className="text-green-500 text-center mt-4">{success}</p>
                 )}
 
-                {/* Links to login or go home */}
                 <div className="mt-4 text-center">
                     <p>
                         Already have an account? <Link to="/login" className="text-green-600 font-bold">Login</Link>

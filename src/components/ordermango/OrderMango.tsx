@@ -19,7 +19,6 @@ const OrderMango: React.FC = () => {
   const {
     data: mango = [] as Mango[],
     isLoading,
-    refetch,
   } = useQuery<Mango[]>({
     queryKey: ["mango"],
     queryFn: async () => {
@@ -35,7 +34,7 @@ const OrderMango: React.FC = () => {
         <div>
       <h1 className="h-24 text-white">text</h1>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 space-x-4 mt-5 space-y-7">
-      {mango?.map((item, index) => {
+      {mango?.map((item) => {
         return(
           <div className="card bg-green-100 bg-base-100 shadow-xl mt-10 hover:bg-yellow-400 hover:shadow-black">
           <figure>
