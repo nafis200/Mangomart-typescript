@@ -36,12 +36,6 @@ const Banner = () => {
                         <p className="text-lg">
                             Mangoes at your doorstep .
                         </p>
-                        {/* <button className="bg-yellow-300 hover:bg-green-500 hover:text-yellow-300 hover:font-bold text-green-500 px-4 py-2 rounded-full mt-2 font-bold text-xl">
-                            <Link to="/ourmango" className="flex items-center gap-2">
-                                <FaLongArrowAltRight />
-                                Explore
-                            </Link>
-                        </button> */}
                     </div>
                 </div>
 

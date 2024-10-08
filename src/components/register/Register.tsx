@@ -2,7 +2,6 @@ import { useContext, useState, FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Helmet } from "react-helmet-async";
-import { updateProfile } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from "sweetalert2";
@@ -14,7 +13,7 @@ const Register = () => {
     if (!authContext) {
         throw new Error('AuthContext not found');
     }
-    const { createUser } = authContext
+    const { createUser,updateUserProfile} = authContext
     const [registerError, setRegisterError] = useState<string>('');
     const [success, setSuccess] = useState<string>('');
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -47,15 +46,11 @@ const Register = () => {
         }
 
         try {
-            const result = await createUser(email, password); 
-            const loggedUser = result.user;
+            await createUser(email, password); 
             setSuccess('User Created Successfully.');
             toast.success('User Created Successfully.');
 
-            await updateProfile(loggedUser, {
-                displayName: name,
-                photoURL: photo,
-            });
+            await updateUserProfile(name,photo);
             const userInfo = { name, email, role: "user" };
             const res = await axiosPublic.post('/users', userInfo);
             if (res.data.insertedId) {
