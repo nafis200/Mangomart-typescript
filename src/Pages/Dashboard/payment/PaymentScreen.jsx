@@ -17,7 +17,7 @@ const PaymentScreen = () => {
   const handle = () => {
     document.getElementById("my_modal_2").close();
     axiosPublic
-      .post("http://localhost:5000/sslComerece", {
+      .post("https://backend-two-theta-46.vercel.app/sslComerece", {
         data,
       })
       .then((res) => {
