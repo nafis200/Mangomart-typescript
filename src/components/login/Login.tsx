@@ -60,22 +60,24 @@ const Login = () => {
     };
 
     return (
-        <div className="hero min-h-screen bg-base-200 bg-[url('https://i.postimg.cc/Y075n05X/1000-F-668433624-HGKul-Uw-Qjae-LV8-Xay-QYy6-F3-RCVQff-TGv.jpg')] animate__animated animate__slideInLeft animate__delay-1s">
+        // <div className="hero min-h-screen bg-base-200 bg-[url('https://i.postimg.cc/Y075n05X/1000-F-668433624-HGKul-Uw-Qjae-LV8-Xay-QYy6-F3-RCVQff-TGv.jpg')] animate__animated animate__slideInLeft animate__delay-1s">
+        <div className="hero min-h-screen bg-base-200 bg-[url('https://i.postimg.cc/Jz5w9psC/thumb-1920-1364887.png')] animate__animated animate__slideInLeft animate__delay-1s">
             <Helmet>
                 <title>Login</title>
             </Helmet>
 
             <div className="hero-content flex-col">
                 <div className="text-center">
-                    <h1 className="text-3xl md:text-5xl font-bold text-black my-3 animate__animated animate__fadeInDown">
-                        Login now!
+                    {/* <h1 className="text-3xl md:text-5xl font-bold text-black mt-14 mb-4 animate__animated animate__fadeInDown"> */}
+                    <h1 className="text-3xl md:text-5xl font-bold mt-14 mb-4 animate__animated animate__fadeInDown">
+                        <span className="text-green-600">Login</span> <span className="text-orange-600"> now!</span>
                     </h1>
 
-                    <div className="card w-full lg:w-[600px] shadow-2xl bg-base-100 p-10 animate__animated animate__slideInLeft">
+                    <div className="card bg-transparent w-full lg:w-[600px] shadow-2xl bg-base-100 p-10 animate__animated animate__slideInLeft">
                         <form onSubmit={handleLogin} className="space-y-4">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text font-bold md:text-xl">Email</span>
                                 </label>
                                 <input
                                     type="email"
@@ -88,7 +90,7 @@ const Login = () => {
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text font-bold md:text-xl ">Password</span>
                                 </label>
                                 <div className="relative">
                                     <input
@@ -117,8 +119,8 @@ const Login = () => {
 
                         <div className="divider">OR</div>
 
-                        <button onClick={handleGoogleSignIn} className="btn btn-outline w-full border-orange-500 text-orange-500 hover:border-orange-600 hover:text-orange-600 flex items-center justify-center">
-                            <FcGoogle className="mr-2" /> Continue with Google
+                        <button onClick={handleGoogleSignIn} className="btn w-full bg-green-400 border-orange-500 hover:bg-orange-500 flex items-center justify-center">
+                            <FcGoogle className="mr-2 md:text-xl" /> Continue with Google
                         </button>
 
                         <p className="text-center mt-4">

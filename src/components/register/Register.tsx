@@ -87,37 +87,37 @@ const Register = () => {
                 <title>Register</title>
             </Helmet>
 
-            <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: "url('https://i.postimg.cc/hGg9XV5j/51671298.jpg')" }}></div>
-            <div className="relative w-full max-w-md p-8 bg-white shadow-md rounded-lg mt-20">
-                <h1 className="text-3xl font-bold text-center text-green-500 mb-6 animate__animated animate__fadeInDown">
-                    Register Now!
+            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://i.postimg.cc/5NpqTvfk/1364889.png')" }}></div>
+            <div className="relative w-full max-w-md p-8 bg-transparent shadow-md rounded-lg mt-20">
+                <h1 className="text-xl md:text-5xl font-bold text-center text-green-600 mb-6 animate__animated animate__fadeInDown">
+                    Register <span className="text-orange-500">Here !</span>
                 </h1>
 
                 <form onSubmit={handleRegister}>
                     <div className="form-control w-full mb-4">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text font-bold md:text-xl">Name</span>
                         </label>
                         <input type="text" name="name" placeholder="Enter your name" className="input input-bordered w-full" required />
                     </div>
 
                     <div className="form-control w-full mb-4">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text font-bold md:text-xl">Email</span>
                         </label>
                         <input type="email" name="email" placeholder="Enter your email" className="input input-bordered w-full" required />
                     </div>
 
                     <div className="form-control w-full mb-4">
                         <label className="label">
-                            <span className="label-text">Photo URL</span>
+                            <span className="label-text font-bold md:text-xl">Photo URL</span>
                         </label>
                         <input type="text" name="photo" placeholder="Enter photo URL" className="input input-bordered w-full" required />
                     </div>
 
                     <div className="form-control w-full mb-6">
                         <label className="label">
-                            <span className="label-text">Password</span>
+                            <span className="label-text font-bold md:text-xl">Password</span>
                         </label>
                         <div className="relative">
                             <input type={showPassword ? "text" : "password"} name="password" placeholder="Enter your password" className="input input-bordered w-full" required />
