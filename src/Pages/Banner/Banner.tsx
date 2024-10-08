@@ -63,7 +63,7 @@ const Banner = () => {
 
                 <div className="relative h-80 md:h-96 lg:h-128">
                     <img src={ban1} alt="" className="w-full h-full object-cover" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-transparent to-yellow-100 bg-opacity-75 text-white text-center h-full">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-transparent to-orange-200 bg-opacity-75 text-white text-center h-full">
                         {/* <h2 className="text-2xl font-bold mt-16">Welcome to <span className="text-xl md:text-3xl text-green-500">Mango Mart</span></h2> */}
                         <p className="text-lg">
                             {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. */}
