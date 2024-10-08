@@ -1,11 +1,20 @@
-# React + TypeScript + Vite
+# Mangomart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Mangomart is a team project By rakesh biswash and nafis ahamed
 
-Currently, two official plugins are available:
+# just pull and give command npm i but dosent provide env file if you need please contract my gmail nafisahamed14@gmail.com
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Live-Link url[@https://mangomart-5f69b.web.app/]
+- Backend Github [@https://github.com/nafis200/Mangomart-backend]
+
+# Feature 
+
+ - Using JWT tokens for security purpose.
+ - Integrate two types of payment systems: Stripe and SSLCommerz.
+ - User order mango.
+ - User see mango price details each and everything.
+ - The admin receives orders and delivers the mangoes
+ - Admin make the user
 
 ## Expanding the ESLint configuration
 
