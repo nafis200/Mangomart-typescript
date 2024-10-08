@@ -18,6 +18,7 @@ import OrderMango from '../components/ordermango/OrderMango';
 import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome'
 import ManageUsers from '../Pages/Dashboard/AdminAccess/ManageUsers'
 import PaymentHistory from '../Pages/Dashboard/AdminAccess/PaymentHistory'
+import PrivateRoute from '../Routes/PrivateRoute.tsx'
 
 export const router = createBrowserRouter([
   {
@@ -39,10 +40,11 @@ export const router = createBrowserRouter([
       {
         path: "/ourmango",
         element: <OurMango></OurMango>,
+        // element: <PrivateRoute><OurMango></OurMango></PrivateRoute>,
       },
       {
         path: '/OrderMango',
-        element:<OrderMango></OrderMango>
+        element: <PrivateRoute><OrderMango></OrderMango></PrivateRoute>
       },
       {
         path:'/singlemango/:id',
@@ -60,7 +62,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
        {
          path: 'userHome',

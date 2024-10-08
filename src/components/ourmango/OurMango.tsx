@@ -46,12 +46,12 @@ const OurMango: React.FC = () => {
         Our Premium Mangoes
       </h1> */}
       <div className="relative text-center mt-16 mb-10">
-      <h1 className="text-4xl font-bold text-teal-600 z-10 relative">
-        Our Premium Mangoes
-      </h1>
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-r from-yellow-400 via-teal-200 to-yellow-400 w-2/3 h-11 mx-auto transform rounded-lg opacity-75"></div>
-      {/* <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-r from-yellow-400 via-teal-200 to-yellow-400 w-2/3 mx-auto transform skew-y-3 rounded-lg opacity-75"></div> */}
-    </div>
+        <h1 className="text-xl md:text-4xl font-bold text-teal-600 z-10 relative">
+          Our Premium Mangoes
+        </h1>
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-r from-orange-400 via-green-400 to-orange-400 w-2/3 h-11 mx-auto transform rounded-lg opacity-75"></div>
+        {/* <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-r from-yellow-400 via-teal-200 to-yellow-400 w-2/3 mx-auto transform skew-y-3 rounded-lg opacity-75"></div> */}
+      </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-8">
         {mango?.map((item, index) => (
           <div
