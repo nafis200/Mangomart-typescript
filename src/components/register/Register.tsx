@@ -10,24 +10,28 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext); 
+    const authContext = useContext(AuthContext);
+    if (!authContext) {
+        throw new Error('AuthContext not found');
+    }
+    const { createUser } = authContext
     const [registerError, setRegisterError] = useState<string>('');
     const [success, setSuccess] = useState<string>('');
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
-    const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+
+    const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.target as HTMLFormElement;
-        const name = form.name.value;
-        const photo = form.photo.value;
-        const email = form.email.value;
-        const password = form.password.value;
+        const name = (form.elements.namedItem("name") as HTMLInputElement).value; 
+        const photo = (form.elements.namedItem("photo") as HTMLInputElement).value;
+        const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+        const password = (form.elements.namedItem("password") as HTMLInputElement).value;
 
         setRegisterError('');
         setSuccess('');
 
-        // Validate password strength
         if (password.length < 6) {
             setRegisterError('Password should be at least 6 characters or longer');
             return;
@@ -42,43 +46,36 @@ const Register = () => {
             return;
         }
 
-        createUser(email, password)
-            .then(result => {
-                const loggedUser = result.user;
-                setSuccess('User Created Successfully.');
-                toast.success('User Created Successfully.');
+        try {
+            const result = await createUser(email, password); 
+            const loggedUser = result.user;
+            setSuccess('User Created Successfully.');
+            toast.success('User Created Successfully.');
 
-                // Update user profile with display name and photo URL
-                updateProfile(loggedUser, {
-                    displayName: name,
-                    photoURL: photo,
-                }).then(() => {
-                    // Prepare user information for storing in database
-                    const userInfo: { name: string; email: string; role: string } = { name: name, email: email, role:"user" };
-                    
-                    // Post user information to the backend
-                    axiosPublic.post('/users', userInfo)
-                        .then(res => {
-                            if (res.data.insertedId) {
-                                Swal.fire({
-                                    position: "top-end",
-                                    icon: "success",
-                                    title: "User created successfully",
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                                navigate('/');
-                            }
-                        });
-                }).catch(error => {
-                    console.error('Error updating profile:', error);
-                    setRegisterError('Failed to update profile.');
-                });
-            })
-            .catch(error => {
-                console.error('Error creating user:', error);
-                setRegisterError(error.message);
+            await updateProfile(loggedUser, {
+                displayName: name,
+                photoURL: photo,
             });
+            const userInfo = { name, email, role: "user" };
+            const res = await axiosPublic.post('/users', userInfo);
+            if (res.data.insertedId) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User created successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/');
+            }
+        } catch (error: any) {
+            console.error('Error:', error);
+            if (error.code) {
+                setRegisterError(error.message);
+            } else {
+                setRegisterError('Failed to create user. Please try again.');
+            }
+        }
     };
 
     return (
@@ -133,18 +130,13 @@ const Register = () => {
                         Register
                     </button>
                 </form>
-
-                {/* Display error messages */}
                 {registerError && (
                     <p className="text-red-500 text-center mt-4">{registerError}</p>
                 )}
-
-                {/* Display success message */}
                 {success && (
                     <p className="text-green-500 text-center mt-4">{success}</p>
                 )}
 
-                {/* Links to login or go home */}
                 <div className="mt-4 text-center">
                     <p>
                         Already have an account? <Link to="/login" className="text-green-600 font-bold">Login</Link>

@@ -2,7 +2,6 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { NavLink } from "react-router-dom";
-import { FaLocationArrow, FaSearchLocation } from "react-icons/fa";
 import { ImLocation2 } from "react-icons/im";
 
 
@@ -21,7 +20,6 @@ const OurMango: React.FC = () => {
   const {
     data: mango = [] as Mango[],
     isLoading,
-    refetch,
   } = useQuery<Mango[]>({
     queryKey: ["mango"],
     queryFn: async () => {
