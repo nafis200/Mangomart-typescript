@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
 
 const Userform = () => {
   const axiosPublic = useAxiosPublic();
- 
+
   const navigate = useNavigate()
 
   const { user } = useContext(AuthContext);
@@ -54,7 +54,7 @@ const Userform = () => {
     }
 
     let amount = taka * quantity;
-    
+
 
     const Information = {
       email,
@@ -66,8 +66,8 @@ const Userform = () => {
       amount,
       id
     };
-    
-    navigate('/dashboard/paymentScreen',{state: Information})
+
+    navigate('/dashboard/paymentScreen', { state: Information })
     location.reload()
 
   };
@@ -110,8 +110,8 @@ const Userform = () => {
                         className="modal modal-middle sm:modal-middle"
                       >
                         <div className="modal-box">
-                          <h3 className="font-bold text-lg text-center">
-                            Acceptor Information
+                          <h3 className="font-bold text-lg text-center text-green-700">
+                            Order Information
                           </h3>
                           <form onSubmit={handleSubmit} className="card-body">
                             <div className="flex space-x-3 ml-[-20px]">
@@ -127,6 +127,7 @@ const Userform = () => {
                                   className="input input-bordered"
                                   defaultValue={user?.displayName}
                                   name="name"
+                                  readOnly="true"
                                   required
                                 />
                               </div>
@@ -142,6 +143,7 @@ const Userform = () => {
                                   className="input input-bordered"
                                   defaultValue={user?.email}
                                   name="email"
+                                  readOnly="true"
                                   required
                                 />
                               </div>
@@ -159,6 +161,7 @@ const Userform = () => {
                                   className="input input-bordered"
                                   defaultValue={item.name}
                                   name="mango"
+                                  readOnly="true"
                                   required
                                 />
                               </div>
