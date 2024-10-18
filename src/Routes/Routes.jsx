@@ -14,6 +14,7 @@ import Paymentsuccess from '../Pages/Dashboard/payment/Paymentsuccess.jsx';
 import Paymentfailure from '../Pages/Dashboard/payment/Paymentfailure.jsx';
 import Userhistory from '../Pages/Dashboard/Userhistory/Userhistory.jsx';
 import OrderMango from '../components/ordermango/OrderMango.tsx';
+import Contact from '../components/Contact/Contact.tsx';
 import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome.jsx';
 import ManageUsers from '../Pages/Dashboard/AdminAccess/ManageUsers.jsx';
 import PaymentHistory from '../Pages/Dashboard/AdminAccess/PaymentHistory.jsx';
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: 'failure',
         element: <Paymentfailure></Paymentfailure>
+      },
+      {
+        path: 'contact',
+        element: <Contact></Contact>
       }
     ],
   },
