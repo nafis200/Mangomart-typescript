@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
@@ -28,31 +27,41 @@ const OrderMango: React.FC = () => {
   });
 
   if (isLoading) {
-    return <div>Loading.....</div>;
+    return <div className="flex items-center justify-center min-h-screen">
+      <div className="text-2xl font-semibold">Loading.....</div>
+    </div>;
   }
+
   return (
-    <div>
-      <h1 className="h-24 text-white">text</h1>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 space-x-4 mt-5 space-y-7">
-        {mango?.map((item) => {
-          return (
-            <div className="card bg-green-100 shadow-xl mt-10 hover:bg-yellow-400 hover:shadow-black">
-              <figure>
-                <img
-                  src={`${item.image}`}
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Name: {item?.name} </h2>
-                <h2 className="card-title">Price: {item?.amount} kg</h2>
-                <div className="card-actions lg:justify-end">
-                  <NavLink to={`/dashboard/mangoOrder`}> <button className="btn btn-success text-white hover:bg-blue-400"> Order Mango </button> </NavLink>
-                </div>
+    <div className="container mx-auto px-4">
+      <h1 className='h-20'>For Spacing</h1>
+      <h1 className="text-4xl font-bold text-center text-teal-600 my-8">Order Your Premium Mangoes</h1>
+      
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6">
+        {mango?.map((item) => (
+          <div key={item._id} className="card max-w-xs mx-auto bg-white hover:bg-orange-300 shadow-lg rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+            <figure className="w-full h-48">
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-full object-cover"
+              />
+            </figure>
+            <div className="p-5">
+              <h2 className="text-xl font-semibold text-gray-800">Name: {item.name}</h2>
+              <p className="mt-2 text-lg text-gray-600">Price: {item.amount} Taka per kg</p>
+              <p className="mt-1 text-sm text-gray-500">Location: {item.location}</p>
+
+              <div className="mt-4">
+                <NavLink to={`/dashboard/mangoOrder`}>
+                  <button className="w-full btn bg-green-600 text-white py-2 rounded-lg hover:bg-teal-500 focus:outline-none transition duration-300">
+                    Order Mango
+                  </button>
+                </NavLink>
               </div>
             </div>
-          )
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );
