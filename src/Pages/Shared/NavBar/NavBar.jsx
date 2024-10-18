@@ -20,9 +20,7 @@ const NavBar = () => {
       <li className="hover:text-orange-300 hover:font-bold text-xl hover:text-[20px]">
         <Link to="/ourmango">Our Mangoes</Link>
       </li>
-      <li className="hover:text-orange-300 hover:font-bold text-xl hover:text-[20px]">
-        <Link to="/contact">Contact</Link>
-      </li>
+
       {user ? (
         <>
           <li className="hover:text-orange-300 hover:font-bold text-xl hover:text-[20px]">
@@ -47,6 +45,9 @@ const NavBar = () => {
           </li>
         </>
       )}
+      <li className="hover:text-orange-300 hover:font-bold text-xl hover:text-[20px]">
+        <Link to="/contact">Contact</Link>
+      </li>
     </>
   );
 

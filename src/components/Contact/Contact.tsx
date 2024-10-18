@@ -1,8 +1,6 @@
 import React, { useRef } from 'react';
-import { FaEnvelope, FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
-import { Roll } from 'react-awesome-reveal';
 
 const Contact: React.FC = () => {
   const form = useRef<HTMLFormElement | null>(null);
@@ -21,9 +19,8 @@ const Contact: React.FC = () => {
           console.log('Email successfully sent:', result);
           Swal.fire({
             title: "Email sent successfully!",
-            background: '#f0f8ff', // Custom background color
-            color: '#333', // Custom text color
-            // confirmButtonColor: '#00BFFF',
+            background: '#f0f8ff', 
+            color: '#333', 
             confirmButtonColor: '#008000',
             showClass: {
               popup: 'animate__animated animate__fadeInUp animate__faster',
