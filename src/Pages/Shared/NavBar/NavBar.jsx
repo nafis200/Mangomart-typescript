@@ -79,8 +79,8 @@ const NavBar = () => {
               {navOptions}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl md:text-2xl">
-            <Link to="/">MangoMart</Link>
+          <a className="text-xl md:text-2xl">
+            <Link to="/" className="text-green-600 font-bold">Mango <span className="text-orange-600">Mart</span></Link>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">

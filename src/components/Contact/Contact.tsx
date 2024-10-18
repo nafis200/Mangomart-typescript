@@ -60,28 +60,28 @@ const Contact: React.FC = () => {
           </h2>
           <div className="card-body">
             <form ref={form} onSubmit={sendEmail}>
-              <div className="form-control">
+              <div data-aos="zoom-in" className="form-control">
                 <label className="label">
                   <span className="label-text font-semibold text-[15px] md:text-[22px] text-green-400">Name</span>
                 </label>
                 <input type="text" name="from_name" placeholder="Name" required className="input input-bordered border-blue-400" />
               </div>
 
-              <div className="form-control">
+              <div data-aos="zoom-in" className="form-control">
                 <label className="label">
                   <span className="label-text font-semibold text-[15px] md:text-[22px] text-green-400">Email</span>
                 </label>
                 <input type="email" name="from_email" placeholder="Email" required className="input input-bordered border-blue-400" />
               </div>
 
-              <div className="form-control">
+              <div data-aos="zoom-in" className="form-control">
                 <label className="label">
                   <span className="label-text font-semibold text-[15px] md:text-[22px] text-green-400">Message</span>
                 </label>
                 <textarea name="message" placeholder="Your message" required className="textarea textarea-bordered border-blue-400"></textarea>
               </div>
 
-              <div className="form-control mt-6">
+              <div data-aos="zoom-in" className="form-control mt-6">
                 <button type="submit" className="hover:bg-orange-300 hover:text-black btn bg-green-500 font-bold text-[15px] md:text-[20px] text-white">
                   Send Email
                 </button>
