@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { NavLink } from "react-router-dom";
 import { ImLocation2 } from "react-icons/im";
+import "animate.css/animate.compat.css"
 
 
 interface Mango {
@@ -44,15 +45,23 @@ const OurMango: React.FC = () => {
         Our Premium Mangoes
       </h1> */}
       <div className="relative text-center mt-16 mb-10">
-        <h1 className="text-xl md:text-4xl font-bold text-teal-600 z-10 relative">
-          Our Premium Mangoes
-        </h1>
+
+        <div data-aos="fade-in">
+
+          <h1 className="text-xl md:text-4xl font-bold text-green-600 z-10 relative">
+            Our Premium Mangoes
+          </h1>
+        </div>
+
+
+
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-r from-orange-400 via-green-400 to-orange-400 w-2/3 h-11 mx-auto transform rounded-lg opacity-75"></div>
         {/* <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-r from-yellow-400 via-teal-200 to-yellow-400 w-2/3 mx-auto transform skew-y-3 rounded-lg opacity-75"></div> */}
       </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-8">
         {mango?.map((item, index) => (
-          <div
+          // <div data-aos="zoom-out"></div>
+          <div data-aos="zoom-out"
             key={index}
             className="card bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 rounded-lg overflow-hidden"
           >

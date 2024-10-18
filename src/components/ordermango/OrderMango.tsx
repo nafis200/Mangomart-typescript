@@ -39,7 +39,8 @@ const OrderMango: React.FC = () => {
       
       <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6">
         {mango?.map((item) => (
-          <div key={item._id} className="card max-w-xs mx-auto bg-white hover:bg-orange-300 shadow-lg rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <div data-aos="zoom-in"
+           key={item._id} className="card max-w-xs mx-auto bg-white hover:bg-orange-300 shadow-lg rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300">
             <figure className="w-full h-48">
               <img
                 src={item.image}
